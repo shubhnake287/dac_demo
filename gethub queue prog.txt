@@ -1,0 +1,88 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class queue
+{
+	private:
+		int front;
+		int rear;
+		int *store;
+		int size;
+	public:
+		queue()
+		{
+			
+		}
+		 queue(int size)
+		 {
+		 
+		 	this->size=size;
+		 	rear=front=-1;
+		 	store=new int[size];
+		 }
+		 
+		~queue()
+		{
+			delete[] store;
+		} 
+		
+		int isempty()
+		{
+			if(front==rear)
+				return 1;
+			else
+				return 0;
+		}
+		
+		int isfull()
+		{
+			if(rear==(size-1))
+				return 1;
+			else
+				return 0;
+		}
+		
+		void equeue(int data)
+		{
+			rear++;
+			store[rear]= data;
+			
+		}
+		
+		int dequeue()
+		{
+			int data;
+			front++;
+			 data=store[front];
+			 store[front]=-1;
+			if(front==rear)
+			{
+				front=rear=-1;
+			}
+			
+			return data;	
+		}
+		
+		int print()
+		{
+			int i;
+			for(i=0;i<size;i++)
+			cout<<store[i]<<endl;
+			
+		}
+	
+	
+	
+};
+
+int main()
+{
+	queue q1(5);
+	q1.equeue(10);
+	q1.equeue(20);
+	q1.equeue(30);
+	q1.dequeue();
+	q1.print();
+	return 0;
+}
+		
